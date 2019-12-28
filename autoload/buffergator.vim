@@ -581,7 +581,14 @@ function! s:NewCatalogViewer(name, title)
             if g:buffergator_show_full_directory_path
                 let l:info["parentdir"] = fnamemodify(l:info["bufname"], ":p:h")
             else
-                let l:info["parentdir"] = fnamemodify(l:info["bufname"], ":h")
+                let curr_dir_path = fnamemodify(l:info["bufname"], ":p:h")
+                let confirm_git_dir = system('git -C "' . curr_dir_path . '" rev-parse')
+                if empty(confirm_git_dir)
+                    let repo_dir = substitute(system('git rev-parse --show-toplevel'), '\n\+$', '', '')
+                    let l:info["parentdir"] = substitute(l:info["filepath"], repo_dir, '', '')
+                else
+                    let l:info["parentdir"] = fnamemodify(l:info["bufname"], ":h")
+                endif
             endif
             let l:info["extension"] = fnamemodify(l:info["bufname"], ":e")
             call add(bcat, l:info)
