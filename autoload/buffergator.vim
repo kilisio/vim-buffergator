@@ -585,7 +585,7 @@ function! s:NewCatalogViewer(name, title)
                 let confirm_git_dir = system('git -C "' . curr_dir_path . '" rev-parse')
                 if empty(confirm_git_dir)
                     let repo_dir = substitute(system('git rev-parse --show-toplevel'), '\n\+$', '', '')
-                    let l:info["parentdir"] = substitute(l:info["filepath"], repo_dir, '', '')
+                    let l:info["parentdir"] = substitute(substitute(substitute(l:info["filepath"], repo_dir . '/', '', ''), 'src/', '', ''), 'lib/', '', '')
                 else
                     let l:info["parentdir"] = fnamemodify(l:info["bufname"], ":h")
                 endif
