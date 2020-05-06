@@ -1190,15 +1190,10 @@ function! s:NewBufferCatalogViewer()
             noremap <buffer> <silent> X           :<C-U>call b:buffergator_catalog_viewer.delete_target(1, 1)<CR>
 
             """"" Selection: show target and switch focus
-            noremap <buffer> <silent> <CR>        :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "")<CR>
             noremap <buffer> <silent> o           :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "")<CR>
-            noremap <buffer> <silent> <LeftMouse> :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "")<CR>
             noremap <buffer> <silent> s           :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "vert sb")<CR>
-            noremap <buffer> <silent> <C-v>       :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "vert sb")<CR>
             noremap <buffer> <silent> i           :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "sb")<CR>
-            noremap <buffer> <silent> <C-s>       :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "sb")<CR>
-            noremap <buffer> <silent> t           :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "tab sb")<CR>
-            noremap <buffer> <silent> <C-t>       :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "tab sb")<CR>
+            noremap <buffer> <silent> <CR>           :<C-U>call b:buffergator_catalog_viewer.visit_target(!g:buffergator_autodismiss_on_select, 0, "tab sb")<CR>
 
             """"" Selection: show target and switch focus, preserving the catalog regardless of the autodismiss setting
             noremap <buffer> <silent> po          :<C-U>call b:buffergator_catalog_viewer.visit_target(1, 0, "")<CR>
